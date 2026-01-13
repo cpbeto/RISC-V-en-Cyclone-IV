@@ -36,7 +36,7 @@ riscv64-unknown-elf-objcopy -O verilog --verilog-data-width=1 loop.elf loop.hex
 Compilar SOC y testbench de Verilator
 
 ```
-verilator --cc soc.v verilog_ram.v ../picorv32/picorv32.v   --exe ./testbench.cpp -Wno-fatal
+verilator --cc soc.v verilog_ram.v ../picorv32/picorv32.v --exe ./testbench.cpp -Wno-fatal
 make -C obj_dir -f Vsoc.mk
 ```
 
@@ -56,3 +56,12 @@ Ejecutar simulación
 [C17] RETIRE PC=00000000
 [C19] RETIRE PC=00000000
 ```
+
+## TODO
+
+ - Explicar flags `riscv64-unknown-elf-gcc`
+ - Explicar atributos de `riscv64-unknown-elf-readelf`
+ - Explicar `riscv64-unknown-elf-objcopy` y formato de Verilog
+ - Explicar funcionamiento de Verilator
+ - Explicar output de la simulación y ciclo de fetch - ejecución - retiro, etc.
+   - ¿Por qué el PC siempre es 0?
