@@ -10,6 +10,20 @@ Proyecto de pregrado para la materia **Organización del Computador 2** de la ca
   - Benchmark (CoreMark).
 - Reporte técnico.
 
+## Dependencias
+
+```bash
+# Quartus Lite (soporte para Cyclone IV)
+# Verilator
+sudo apt install verilator
+
+# RISC-V toolchain
+sudo apt install gcc-riscv64-unknown-elf
+
+# Clonar repositorio
+git clone ...
+```
+
 ## Hoja de ruta
 ### Semana 1
 - Realizar el *survey* preliminar de softcores y módulos RISC-V, así como las FPGA disponibles en el mercado.

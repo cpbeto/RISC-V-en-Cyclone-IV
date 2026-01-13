@@ -18,37 +18,37 @@ El CPU ejecuta el loop infinito y desde el SOC de Verilog podemos imprimir usand
 
 Compilación y linkeo
 
-```
+```bash
 riscv64-unknown-elf-gcc -march=rv32i -mabi=ilp32 -nostdlib -Ttext=0x0 loop.S -o loop.elf
 ```
 
 Verificar ELF
-```
+```bash
 riscv64-unknown-elf-readelf -h loop.elf
 ```
 
 Traducir ELF a binario compatible con Verilog
 
-```
+```bash
 riscv64-unknown-elf-objcopy -O verilog --verilog-data-width=1 loop.elf loop.hex
 ```
 
 Compilar SOC y testbench de Verilator
 
-```
+```bash
 verilator --cc soc.v verilog_ram.v ../picorv32/picorv32.v --exe ./testbench.cpp -Wno-fatal
 make -C obj_dir -f Vsoc.mk
 ```
 
 Ejecutar simulación
 
-```
+```bash
 ./out/Vsoc
 ```
 
 ## Resultados
 
-```
+```bash
 [C8] FETCH addr=00000000 data=00000013
 [C12] FETCH addr=00000004 data=00000013
 [C13] RETIRE PC=00000000
