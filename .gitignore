@@ -1,4 +1,45 @@
-**/*.bin
-**/*.elf
-**/*.hex
-**/obj_dir/
+# --- Quartus Prime / Prime Pro ---
+*.qpf
+*.qsf
+*.sdc
+*.vhd
+*.v
+*.sv
+# Ignore folders
+db/
+incremental_db/
+output_files/
+simulation/
+greybox_tmp/
+# Ignore individual files
+*.sof
+*.pof
+*.qws
+*.jdi
+*.rpt
+*.summary
+*.pin
+*.sld
+*.cmp
+*.bak
+
+# --- Verilator ---
+obj_dir/
+#*.cpp
+#*.h
+#*.mk
+
+# --- Simulation (Questa/ModelSim) ---
+work/
+transcript
+vsim.wlf
+*.vstf
+*.vcd
+
+# --- Binaries ---
+*.bin
+*.elf
+*.hex
+
+# --- General ---
+.DS_Store
