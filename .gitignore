@@ -3,7 +3,7 @@
 *.qsf
 *.sdc
 *.vhd
-*.v
+# *.v
 *.sv
 # Ignore folders
 db/

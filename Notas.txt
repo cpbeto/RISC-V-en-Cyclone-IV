@@ -1,0 +1,24 @@
+- Log de arquitectura:
+ - PC + Registros + Entrada/salida de memoria
+ - ¿Cada ciclo de clock o cuando la instrucción es "retirada"?
+ 	El retiro de la instrucción tiene que ver con cuando un instrucción es completada y sus resultados impactan sobre la arquitectura del procesador (registros, etc.). PicoRV32 retira una instrucción por ciclo así que con registrar el estado en cada ciclo alcanza.
+  
+- Diferencia entre generate (tiempo de compilación) y always @(posedge clk) (comportamiento secuencial en tiempo de ejecución).
+  - generate
+  	No hay estados, no hay clock, no hay lógica secuencial.
+  	
+  - begin / end
+  	Hay estados, clock input, genera flip-flops.
+  	
+ Si leemos los registros usando begin/end estamos produciendo 32x32 flip-flops, introduciendo delay de un ciclo y modificando el eje temporal.
+
+ generate
+  if (some_signal) begin // ❌ illegal
+  
+ Además, la versión secuencial debería incrementar el uso de FFs y LUTs.
+ 
+- Para trazar la memoria, no necesitamos de mem_valid ni mem_wstrb, sino una combinación de los dos.
+	mem_valid indica un pedido de lecto-escritura
+	mem_wstrb indica la porción de palabra a escribir (0 si es lectura)
+	
+	Luego, mem_valid && |mem_wstrb equivale a un flag de escritura.
