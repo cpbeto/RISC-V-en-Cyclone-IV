@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
     top->resetn = 1;
 
     uint64_t cycle = 0;
-    while (cycle <= 200) {
+    while (cycle <= 1000) {
         top->clk = 0;
         top->eval();
 
@@ -25,7 +25,6 @@ int main(int argc, char **argv) {
         static uint32_t last_pc = 0xffffffff;
 
         if (top->debug_pc != last_pc) {
-            printf("\n");
             printf("RETIRE PC=%08x at cycle %lu\n",
                 top->debug_pc,
                 cycle
@@ -35,10 +34,10 @@ int main(int argc, char **argv) {
 
         // Log after rising edge
         printf("%lu ", cycle);
-        printf("%08x ", top->debug_pc);
+        printf("PC=%08x ", top->debug_pc);
 
-        for (int i = 0; i < 32; i++) {
-            printf("%08x ", top->debug_regfile[i]);
+        for (int i = 0; i < 8; i++) {
+            printf("REG[%02d]=%08x ", i, top->debug_regfile[i]);
         }
 
         if (top->debug_mem_write) {

@@ -100,15 +100,18 @@ module soc (
         .trace_data  (trace_data)
     );
 
-    verilog_ram ram (
-        .clk        (clk),
-        .mem_valid  (mem_valid),
-        .mem_instr  (mem_instr),
-        .mem_addr   (mem_addr),
-        .mem_wdata  (mem_wdata),
-        .mem_wstrb  (mem_wstrb),
-        .mem_rdata  (mem_rdata),
-        .mem_ready  (mem_ready)
+    verilog_ram_harvard #(
+        .IMEM_BYTES(16384),
+        .DMEM_BYTES(262144)
+    ) ram (
+        .clk(clk),
+        .mem_valid(mem_valid),
+        .mem_instr(mem_instr),
+        .mem_addr(mem_addr),
+        .mem_wdata(mem_wdata),
+        .mem_wstrb(mem_wstrb),
+        .mem_rdata(mem_rdata),
+        .mem_ready(mem_ready)
     );
 
 endmodule
